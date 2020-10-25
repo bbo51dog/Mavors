@@ -1,0 +1,5 @@
+name: Mavors
+api: 3.0.0
+main: bbo51dog\mavors\MavorsPlugin
+author: bbo51dog
+version: 1.0.0-dev
