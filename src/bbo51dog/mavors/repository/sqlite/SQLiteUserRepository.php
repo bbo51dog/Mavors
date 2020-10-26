@@ -123,7 +123,7 @@ class SQLiteUserRepository implements UserRepository{
                 <<<SQL
 				CREATE TABLE IF NOT EXISTS users(
 				    name TEXT NOT NULL PRIMARY KEY,
-				    money INT NOT NULL,
+				    money INT NOT NULL
 				)
 				SQL);
         }catch(Exception $exception){
