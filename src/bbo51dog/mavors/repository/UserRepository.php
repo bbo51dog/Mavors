@@ -10,7 +10,7 @@ interface UserRepository extends Repository{
 
     public function update(User $user): void;
 
-    public function findByName(string $name): User;
+    public function findByName(string $name): ?User;
 
     /**
      * @return User[]
@@ -18,4 +18,6 @@ interface UserRepository extends Repository{
     public function getAll(): array;
 
     public function register(User $user): void;
+
+    public function fetch(string $name): void;
 }
