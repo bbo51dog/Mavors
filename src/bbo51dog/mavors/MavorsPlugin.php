@@ -9,8 +9,10 @@ use bbo51dog\mavors\reducer\Reducer;
 use bbo51dog\mavors\repository\sqlite\SQLiteUserRepository;
 use bbo51dog\mavors\repository\UserRepository;
 use bbo51dog\mavors\service\interfaces\MoneyService;
+use bbo51dog\mavors\service\interfaces\UserService;
 use bbo51dog\mavors\service\MoneyServiceImpl;
 use bbo51dog\mavors\service\ServiceProvider;
+use bbo51dog\mavors\service\UserServiceImpl;
 use bbo51dog\mavors\state\RootState;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginBase;
@@ -37,6 +39,7 @@ class MavorsPlugin extends PluginBase implements MavorsCore{
         $this->serviceProvider = new ServiceProvider();
         $this->serviceProvider->registerAll([
             MoneyService::class => new MoneyServiceImpl($this->userRepo),
+            UserService::class => new UserServiceImpl($this->userRepo),
         ]);
     }
 
