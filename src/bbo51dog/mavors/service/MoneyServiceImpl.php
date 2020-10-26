@@ -1,8 +1,9 @@
 <?php
 
-namespace bbo51dog\mavors\money;
+namespace bbo51dog\mavors\service;
 
 use bbo51dog\mavors\repository\UserRepository;
+use bbo51dog\mavors\service\interfaces\MoneyService;
 
 class MoneyServiceImpl implements MoneyService{
 
