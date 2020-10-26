@@ -2,15 +2,15 @@
 
 namespace bbo51dog\mavors\repository;
 
-use bbo51dog\mavors\MavorsPlugin;
+use bbo51dog\mavors\MavorsCore;
 
 interface Repository{
 
     /**
      * Repository constructor.
-     * @param MavorsPlugin $plugin
+     * @param MavorsCore $core
      */
-    public function __construct(MavorsPlugin $plugin);
+    public function __construct(MavorsCore $core);
 
     /**
      * Close database connection

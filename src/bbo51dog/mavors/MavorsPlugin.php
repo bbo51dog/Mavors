@@ -3,6 +3,8 @@
 namespace bbo51dog\mavors;
 
 use bbo51dog\mavors\action\Action;
+use bbo51dog\mavors\event\CommonHandler;
+use bbo51dog\mavors\event\HandlerManager;
 use bbo51dog\mavors\money\MoneyService;
 use bbo51dog\mavors\money\MoneyServiceImpl;
 use bbo51dog\mavors\reducer\Reducer;
@@ -10,11 +12,10 @@ use bbo51dog\mavors\repository\sqlite\SQLiteUserRepository;
 use bbo51dog\mavors\repository\UserRepository;
 use bbo51dog\mavors\service\ServiceProvider;
 use bbo51dog\mavors\state\RootState;
+use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginBase;
 
-class MavorsPlugin extends PluginBase{
-
-    public const SQLITE_FILE_NAME = 'Mavors.db';
+class MavorsPlugin extends PluginBase implements MavorsCore{
 
     /** @var Store */
     private $store;
@@ -39,7 +40,25 @@ class MavorsPlugin extends PluginBase{
         ]);
     }
 
+    public function onEnable(){
+        $handlerManager = new HandlerManager($this);
+        $handlerManager
+            ->registerHandler(new CommonHandler());
+    }
+
     public function onDisable(){
         $this->userRepo->close();
+    }
+
+    public function getStore(): Store{
+        return $this->store;
+    }
+
+    public function getPlugin(): Plugin{
+        return $this;
+    }
+
+    public function getServiceProvider(): ServiceProvider{
+        return $this->serviceProvider;
     }
 }
